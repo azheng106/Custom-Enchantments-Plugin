@@ -1,0 +1,12 @@
+name: CustomEnchantments
+version: '1.0'
+main: me.aquaponics.customenchantments.CustomEnchantments
+api-version: '1.20'
+commands:
+  cenchant:
+    description: Enchant the item in your hand with a custom enchant
+    usage: /<command> <enchant> <level>
+    aliases:
+      - customenchant
+      - enchantc
+      - cench
