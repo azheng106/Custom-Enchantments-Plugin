@@ -44,6 +44,7 @@ public class LavaWalker implements Listener {
                     toRemove.add(loc);
                 }
             }
+            return;
         }
         ItemMeta bootsMeta = boots.getItemMeta();
         NamespacedKey key = new NamespacedKey(plugin, "lavawalker");

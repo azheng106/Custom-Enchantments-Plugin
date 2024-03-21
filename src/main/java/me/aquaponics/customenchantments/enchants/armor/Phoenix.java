@@ -45,8 +45,8 @@ public class Phoenix implements Listener {
                                 String.format("%.2f", (PHOENIX_COOLDOWN_MS - (time - cooldowns.get(uuid))) / (1000D * 60)) + "m)");
                     } else {
                         e.setCancelled(true);
-                        player.setHealth(6);
-                        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 120, 1));
+                        player.setHealth(7);
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 140, 1));
                         player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 100);
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "Phoenix revived you from the ashes!");
                         cooldowns.put(uuid, time);

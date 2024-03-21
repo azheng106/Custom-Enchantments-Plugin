@@ -1,14 +1,16 @@
 package me.aquaponics.customenchantments;
 
 import me.aquaponics.customenchantments.commands.EnchantCommandExecutor;
+import me.aquaponics.customenchantments.enchants.AnvilHandler;
+import me.aquaponics.customenchantments.enchants.EnchantList;
 import me.aquaponics.customenchantments.enchants.armor.LavaWalker;
 import me.aquaponics.customenchantments.enchants.armor.Phoenix;
+import me.aquaponics.customenchantments.enchants.bow.Artemis;
 import me.aquaponics.customenchantments.enchants.bow.MegaLongBow;
 import me.aquaponics.customenchantments.enchants.bow.Telebow;
 import me.aquaponics.customenchantments.enchants.weapon.Assassin;
 import me.aquaponics.customenchantments.enchants.weapon.Lifesteal;
 import me.aquaponics.customenchantments.enchants.weapon.Perun;
-import me.aquaponics.customenchantments.utils.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -36,9 +38,9 @@ public final class CustomEnchantments extends JavaPlugin {
         maxLevels.put(EnchantList.LIFESTEAL, 3);
         maxLevels.put(EnchantList.LAVAWALKER, 2);
         maxLevels.put(EnchantList.PHOENIX, 1);
+        maxLevels.put(EnchantList.ARTEMIS, 1);
 
         this.getCommand("cenchant").setExecutor(new EnchantCommandExecutor());
-
         getServer().getPluginManager().registerEvents(new Perun(this), this);
         getServer().getPluginManager().registerEvents(new MegaLongBow(this), this);
         getServer().getPluginManager().registerEvents(new Assassin(this), this);
@@ -46,6 +48,8 @@ public final class CustomEnchantments extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Lifesteal(this), this);
         getServer().getPluginManager().registerEvents(new LavaWalker(this), this);
         getServer().getPluginManager().registerEvents(new Phoenix(this), this);
+        getServer().getPluginManager().registerEvents(new AnvilHandler(this), this);
+        getServer().getPluginManager().registerEvents(new Artemis(this), this);
 
         // Recipe to craft a perun axe
         ItemStack perunAxe = new ItemStack(Material.GOLDEN_AXE);

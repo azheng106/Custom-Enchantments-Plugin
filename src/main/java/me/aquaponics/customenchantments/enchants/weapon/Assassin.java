@@ -1,9 +1,6 @@
 package me.aquaponics.customenchantments.enchants.weapon;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -54,14 +51,22 @@ public class Assassin implements Listener {
                     player.sendMessage(ChatColor.DARK_RED + "Assassin Teleport on cooldown (" +
                             String.format("%.2f", (TP_COOLDOWN_MS - (time - cooldowns.get(uuid))) / 1000D) + "s)");
                 } else {
-                    cooldowns.put(uuid, time);
                     Location targetLocation = damaged.getLocation();
                     Location behindTarget = targetLocation.add(targetLocation.getDirection().multiply(-1));
-                    behindTarget.setYaw(targetLocation.getYaw()); // Set player to be looking at the target's back after teleporting
-                    damager.teleport(behindTarget);
-                    player.getWorld().spawnParticle(Particle.END_ROD, player.getLocation(), 10);
+                    if (behindTarget.getBlock().getType().isAir() &&
+                        behindTarget.clone().add(0, -1, 0).getBlock().getType().isAir() &&
+                        behindTarget.clone().add(0, -2, 0).getBlock().getType().isAir()) {
+                        player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Canceled Assassin teleport to prevent falling");
+                    } else {
+                        behindTarget.setYaw(targetLocation.getYaw()); // Set player to be looking at the target's back after teleporting
+                        damager.teleport(behindTarget);
+                        player.getWorld().spawnParticle(Particle.END_ROD, player.getLocation(), 100);
+                        cooldowns.put(uuid, time);
+                    }
                 }
             }
         }
     }
+
+
 }

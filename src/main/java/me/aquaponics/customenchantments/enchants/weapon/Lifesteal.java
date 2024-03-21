@@ -15,6 +15,7 @@ import org.bukkit.plugin.Plugin;
 
 public class Lifesteal implements Listener {
     private final Plugin plugin;
+    
     public Lifesteal(Plugin plugin) {
         this.plugin = plugin;
     }

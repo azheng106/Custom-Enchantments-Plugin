@@ -1,7 +1,7 @@
 package me.aquaponics.customenchantments.commands;
 
 import me.aquaponics.customenchantments.CustomEnchantments;
-import me.aquaponics.customenchantments.EnchantList;
+import me.aquaponics.customenchantments.enchants.EnchantList;
 import me.aquaponics.customenchantments.utils.NumberUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -122,7 +122,7 @@ public class EnchantCommandExecutor implements CommandExecutor {
      * Correctly format the capitals/lowercases in an enchant name so the name looks good when added to an item
      * @param str: The enchant name to format
      */
-    public String normalizeName(String str) {
+    public static String normalizeName(String str) {
         if (str.equalsIgnoreCase("megalongbow")) {
             return "Mega Longbow";
         }
@@ -143,31 +143,31 @@ public class EnchantCommandExecutor implements CommandExecutor {
         switch (enchant) {
             case PERUN, ASSASSIN:
                 if ( !(axes.contains(currentItem) || swords.contains(currentItem)) ) {
-                    player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Perun and Assassin can only be applied to swords or axes");
+                    player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "Can only be applied to swords or axes");
                     return false;
                 }
                 break;
             case LIFESTEAL:
                 if (!swords.contains(currentItem)) {
-                    player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Lifesteal can only be applied to swords");
+                    player.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "Can only be applied to swords");
                     return false;
                 }
                 break;
-            case MEGALONGBOW, TELEBOW:
+            case MEGALONGBOW, TELEBOW, ARTEMIS:
                 if (currentItem != Material.BOW) {
-                    player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "MLB and Telebow can only be applied to bows");
+                    player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "Can only be applied to bows");
                     return false;
                 }
                 break;
             case LAVAWALKER:
                 if (!boots.contains(currentItem)) {
-                    player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Lava Walker can only be applied to boots");
+                    player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "Can only be applied to boots");
                     return false;
                 }
                 break;
             case PHOENIX:
                 if (!leggings.contains(currentItem)) {
-                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Phoenix can only be applied to boots");
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Can only be applied to boots");
                 }
                 break;
             default:
