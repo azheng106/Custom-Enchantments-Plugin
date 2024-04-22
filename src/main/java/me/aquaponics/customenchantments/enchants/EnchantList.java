@@ -8,5 +8,6 @@ public enum EnchantList { // In the order they were created
     LIFESTEAL,
     LAVAWALKER,
     PHOENIX,
+    LUCA,
     ARTEMIS;
 }
