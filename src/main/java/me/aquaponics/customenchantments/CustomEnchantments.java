@@ -11,6 +11,7 @@ import me.aquaponics.customenchantments.enchants.bow.Telebow;
 import me.aquaponics.customenchantments.enchants.weapon.Assassin;
 import me.aquaponics.customenchantments.enchants.weapon.Lifesteal;
 import me.aquaponics.customenchantments.enchants.weapon.Perun;
+import me.aquaponics.customenchantments.enchants.weapon.Luca;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -39,6 +40,7 @@ public final class CustomEnchantments extends JavaPlugin {
         maxLevels.put(EnchantList.LAVAWALKER, 2);
         maxLevels.put(EnchantList.PHOENIX, 1);
         maxLevels.put(EnchantList.ARTEMIS, 1);
+        maxLevels.put(EnchantsList.LUCA, 3);
 
         this.getCommand("cenchant").setExecutor(new EnchantCommandExecutor());
         getServer().getPluginManager().registerEvents(new Perun(this), this);
@@ -50,6 +52,7 @@ public final class CustomEnchantments extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Phoenix(this), this);
         getServer().getPluginManager().registerEvents(new AnvilHandler(this), this);
         getServer().getPluginManager().registerEvents(new Artemis(this), this);
+        getServer().getPluginManager().registerEvents(new Luca(this), this);
 
         // Recipe to craft a perun axe
         ItemStack perunAxe = new ItemStack(Material.GOLDEN_AXE);
