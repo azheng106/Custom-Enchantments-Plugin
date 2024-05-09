@@ -1,6 +1,5 @@
-package me.aquaponics.customenchantments.enchants.weapon;
+package me.aquaponics.customenchantments.enchants.melee;
 
-import me.aquaponics.customenchantments.CustomEnchantments;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;

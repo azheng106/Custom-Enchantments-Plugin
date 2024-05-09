@@ -1,4 +1,4 @@
-package me.aquaponics.customenchantments.enchants.weapon;
+package me.aquaponics.customenchantments.enchants.melee;
 
 import org.bukkit.GameMode;
 import org.bukkit.NamespacedKey;

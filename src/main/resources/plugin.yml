@@ -10,3 +10,9 @@ commands:
       - customenchant
       - enchantc
       - cench
+  bonemerang:
+    description: Give the sender a bonemerang item
+    usage: /<command>
+    aliases:
+      - bone
+      - bonem

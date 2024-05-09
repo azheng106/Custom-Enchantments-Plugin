@@ -1,5 +1,6 @@
 package me.aquaponics.customenchantments;
 
+import me.aquaponics.customenchantments.commands.BonemerangCommandExecutor;
 import me.aquaponics.customenchantments.commands.EnchantCommandExecutor;
 import me.aquaponics.customenchantments.enchants.AnvilHandler;
 import me.aquaponics.customenchantments.enchants.EnchantList;
@@ -8,9 +9,10 @@ import me.aquaponics.customenchantments.enchants.armor.Phoenix;
 import me.aquaponics.customenchantments.enchants.bow.Artemis;
 import me.aquaponics.customenchantments.enchants.bow.MegaLongBow;
 import me.aquaponics.customenchantments.enchants.bow.Telebow;
-import me.aquaponics.customenchantments.enchants.weapon.Assassin;
-import me.aquaponics.customenchantments.enchants.weapon.Lifesteal;
-import me.aquaponics.customenchantments.enchants.weapon.Perun;
+import me.aquaponics.customenchantments.enchants.melee.Assassin;
+import me.aquaponics.customenchantments.enchants.melee.Lifesteal;
+import me.aquaponics.customenchantments.enchants.melee.Perun;
+import me.aquaponics.customenchantments.items.Bonemerang;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -41,6 +43,7 @@ public final class CustomEnchantments extends JavaPlugin {
         maxLevels.put(EnchantList.ARTEMIS, 1);
 
         this.getCommand("cenchant").setExecutor(new EnchantCommandExecutor());
+        this.getCommand("bonemerang").setExecutor(new BonemerangCommandExecutor(this));
         getServer().getPluginManager().registerEvents(new Perun(this), this);
         getServer().getPluginManager().registerEvents(new MegaLongBow(this), this);
         getServer().getPluginManager().registerEvents(new Assassin(this), this);
@@ -50,6 +53,8 @@ public final class CustomEnchantments extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Phoenix(this), this);
         getServer().getPluginManager().registerEvents(new AnvilHandler(this), this);
         getServer().getPluginManager().registerEvents(new Artemis(this), this);
+
+        getServer().getPluginManager().registerEvents(new Bonemerang(this), this);
 
         // Recipe to craft a perun axe
         ItemStack perunAxe = new ItemStack(Material.GOLDEN_AXE);

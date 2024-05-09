@@ -1,4 +1,4 @@
-package me.aquaponics.customenchantments.enchants.weapon;
+package me.aquaponics.customenchantments.enchants.melee;
 
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
