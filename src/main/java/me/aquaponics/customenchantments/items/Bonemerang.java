@@ -32,7 +32,7 @@ public class Bonemerang implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent e) {
         if (!(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
-        if (e.getItem().getType() != Material.BONE) return;
+        if (e.getItem() == null || e.getItem().getType() != Material.BONE) return;
         if (!e.getItem().getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "bonemerang"))) return;
         Player player = e.getPlayer();
         if (!bonemerangsInPlay.containsKey(player.getUniqueId())) {
