@@ -58,11 +58,15 @@ public class EnchantCommandExecutor implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {
-        if (!(commandSender instanceof Player player)) {
+        if (!(commandSender instanceof Player p)) {
             return true;
         }
         if (args.length != 2) {
-            player.sendMessage("Usage: /cenchant <enchant> <level>");
+            p.sendMessage("Usage: /cenchant <enchant> <level>");
+            return true;
+        }
+        if (!p.hasPermission("customench.enchant")) {
+            p.sendMessage(ChatColor.RED + "You do not have permission to run this command");
             return true;
         }
 
@@ -76,12 +80,12 @@ public class EnchantCommandExecutor implements CommandExecutor {
         int level = Integer.parseInt(args[1]);
 
         if (level > CustomEnchantments.maxLevels.get(enchantEnum)) {
-            player.sendMessage("Inputted level exceeds max level");
+            p.sendMessage("Inputted level exceeds max level");
             return true;
         }
 
-        ItemStack currentHeldItem = player.getInventory().getItemInMainHand();
-        if (!enchantCanBeAppliedToItem(player, enchantEnum, currentHeldItem.getType())) {
+        ItemStack currentHeldItem = p.getInventory().getItemInMainHand();
+        if (!enchantCanBeAppliedToItem(p, enchantEnum, currentHeldItem.getType())) {
             /*
              If enchant cannot be applied to held item (e.g. perun cannot be applied to shovels)
              then don't continue generating replacement item
@@ -89,7 +93,7 @@ public class EnchantCommandExecutor implements CommandExecutor {
             return true;
         }
         ItemStack replacementItem = applyEnchant(currentHeldItem, enchantString, level);
-        player.getInventory().setItemInMainHand(replacementItem);
+        p.getInventory().setItemInMainHand(replacementItem);
 
         return true;
     }

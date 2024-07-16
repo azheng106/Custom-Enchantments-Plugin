@@ -16,3 +16,9 @@ commands:
     aliases:
       - bone
       - bonem
+permissions:
+  customench.enchant:
+    description: Allows someone to run the /cenchant command
+  customench.bonemerang:
+    description: Allows someone to run the /bonemerang command
+

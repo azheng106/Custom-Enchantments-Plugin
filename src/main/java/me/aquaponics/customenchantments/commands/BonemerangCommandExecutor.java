@@ -24,6 +24,10 @@ public class BonemerangCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player p) {
+            if (!p.hasPermission("customench.bonemerang")) {
+                p.sendMessage(ChatColor.RED + "You do not have permission to run this command");
+                return true;
+            }
             ItemStack bonemerang = new ItemStack(Material.BONE, 1);
             ItemMeta meta = bonemerang.getItemMeta();
             meta.setDisplayName(ChatColor.GOLD + "Bonemerang");
